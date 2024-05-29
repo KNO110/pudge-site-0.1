@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Brush Script MT', cursive;
+    line-height: 1.6;
+    color: #022309;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background: #022309;
+    color: #fff;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+header h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    animation: fadeInDown 1s ease;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: max-height 0.5s ease;
+    overflow: hidden;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #044612;;
+}
+
+/* анимка бургера, ну менюшка та */
+.nav-toggle:checked + .burger .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.nav-toggle:checked + .burger .line2 {
+    opacity: 0;
+}
+
+.nav-toggle:checked + .burger .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.nav-toggle:checked ~ nav {
+    max-height: 100vh;
+    background: #022309;
+}
+
+.nav-toggle:checked ~ nav .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    animation: slideIn 0.5s forwards;
+}
+
+.nav-toggle:checked ~ nav .nav-links li {
+    margin: 20px 0;
+}
+
+/* бургер меню фон */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+section {
+    padding: 60px 0;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.home-section {
+    background: #f4f4f4;
+    text-align: center;
+}
+
+.about-section, .contact-section {
+    background: #fff;
+    text-align: center;
+}
+
+section img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background: #022309;;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer .social-links a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer .social-links a:hover {
+    color: #ddd;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #022309;
+        width: 100%;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        text-align: center;
+        transition: all 0.5s ease;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    header h1 {
+        display: none;
+    }
+
+    .nav-toggle:checked + .burger + nav .nav-links {
+        display: flex;
+        max-height: 100vh;
+    }
+}
